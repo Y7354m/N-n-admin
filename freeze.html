@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>:(</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #0000AA; /* Classic blue */
+      color: white;
+      font-family: Consolas, monospace;
+      font-size: 1.2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+      user-select: none;
+      cursor: none;
+    }
+
+    .bsod {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .sad-face {
+      font-size: 4em;
+    }
+
+    .error-message {
+      margin-top: 20px;
+    }
+
+    .loading {
+      margin-top: 40px;
+    }
+
+    .blink {
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bsod">
+    <div class="sad-face">:(</div>
+    <div class="error-message">
+      Your PC ran into a problem and needs to restart. We're just<br>
+      collecting some error info, and then we'll restart for you.
+    </div>
+    <div class="loading">0% complete</div>
+    <div class="blink">For more information about this issue, visit https://fake.support.windows.com</div>
+  </div>
+
+  <script>
+    // Optional: fake loading percentage
+    let percent = 0;
+    const loadingText = document.querySelector('.loading');
+
+    const interval = setInterval(() => {
+      percent += Math.floor(Math.random() * 5) + 1;
+      if (percent > 100) percent = 100;
+      loadingText.textContent = percent + "% complete";
+      if (percent === 100) clearInterval(interval);
+    }, 500);
+
+    // Disable right-click and keys
+    window.addEventListener("contextmenu", e => e.preventDefault());
+    window.addEventListener("keydown", e => e.preventDefault());
+    window.addEventListener("click", e => e.preventDefault());
+  </script>
+</body>
+</html>
